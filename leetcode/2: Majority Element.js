@@ -1,3 +1,6 @@
+//https://leetcode.com/problems/majority-element/description/
+//arrays & hashing
+
 const majorityElement = function(nums) {
     let count = {};
     for (let i = 0; i < nums.length; i++) {
@@ -9,7 +12,7 @@ const majorityElement = function(nums) {
         }
     if (count[num] > nums.length /2) {
         return num;
-     }
+    }
     }
 };
 
