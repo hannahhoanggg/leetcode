@@ -1,0 +1,63 @@
+const twoSum = function(nums, target) {
+    let map = new Map(); 
+    for (let i=0; i < nums.length; i++) {
+        let complement = target - nums[i];
+        if (map.has(complement)) {
+            return [map.get(complement), i];
+        }
+        map.set(nums[i], i);
+    }
+    return null;
+};
+
+
+Detailed Breakdown
+1. let map = new Map();
+This creates a new Map object called map which will be used to store numbers and their corresponding indices as we iterate through the array.
+2. for (let i = 0; i < nums.length; i++)
+This starts a for loop that will iterate over each element in the nums array. The loop variable i represents the current index.
+3. let complement = target - nums[i];
+This line calculates the value needed to add to nums[i] to reach the target. This value is called the complement.
+4. if (map.has(complement)) 
+map.has(complement): This checks if the complement value is already in the map. The Map object provides a has method that returns true if the map contains a specific key, and false otherwise.
+The purpose of this check is to see if we have previously encountered a number in the array that can be added to the current number nums[i] to get the target.
+3. return [map.get(complement), i];
+map.get(complement): If the map contains the complement, we retrieve the index of the complement using the get method. This method returns the value associated with the specified key in the map.
+return [map.get(complement), i];: We return an array containing two indices:
+    -numMap.get(complement): The index of the complement.
+    -i: The current index.
+This return statement effectively stops the execution of the function and returns the indices of the two numbers that add up to the target.
+4. numMap.set(nums[i], i);
+If the complement does not exist in the map, we add the current number nums[i] to the map with its index i as the value. This allows us to check for this number as a complement in future iterations.
+
+Detailed Explanation of complement
+1. Understanding the Objective
+You want to find two numbers, say x and y, such that x + y = target.
+For each number x in the array, you can express the problem as finding another number y such that y = target - x.
+2. Iterating Over the Array
+As you iterate through each element in the array (nums[i]):
+
+    -nums[i] is the current number x you're looking at.
+    -To find the number y that, when added to x, equals target, you compute y as target - x.
+3. Calculating the Complement
+Let's break down let complement = target - nums[i];:
+
+    -nums[i]: This is the current element in the array you're considering.
+    -target: This is the target sum you're trying to achieve with two numbers from the array.
+    -target - nums[i]: This calculation gives you the value that, when added to nums[i], equals the target. This value is what you're looking for in the rest of the array.
+
+Example & Explanation
+Suppose nums = [2, 7, 11, 15] and target = 9.
+
+On the first iteration (i = 0):
+nums[i] is 2.
+target - nums[i] is 9 - 2 which equals 7.
+So, complement is 7.
+This means you are looking for the number 7 in the rest of the array to pair with 2 to sum up to 9.
+
+Using the Complement
+You then check if this complement (in this case, 7) has already been seen and stored in the map (map).
+If it has, it means you have found the two numbers (2 and 7) that add up to the target (9).
+If it hasn't, you store the current number (2) and its index in the map and continue with the next iteration.
+Conclusion
+The line let complement = target - nums[i]; is central to the logic of finding the two numbers that add up to the target. It calculates the required value (complement) that, when added to the current number (nums[i]), equals the target. This value is then checked against previously seen numbers to see if it has already been encountered in the array.
