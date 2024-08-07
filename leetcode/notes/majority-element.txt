@@ -1,0 +1,63 @@
+const majorityElement = function(nums) {
+        // Initialize an empty object to keep track of counts of each number
+    let count = {};
+         // Iterate over each element in the nums array
+    for (let i = 0; i < nums.length; i++) {
+        const num = nums[i];    // Get the current number
+        // If the number is not already a key in count, initialize it with 1
+        if (!count[num]) {
+            count[num] = 1;
+        } else {
+            // If the number is already a key, increment its count
+            count[num]++;
+        }
+        // If the count of the current number exceeds half the length of nums, return it
+    if (count[num] > nums.length /2) {
+        return num;
+    }
+    }
+};
+
+
+Detailed Breakdown
+
+1. const majorityElement = function(nums)
+This line defines a constant variable majorityElement and assigns it an anonymous function that takes nums as its parameter. nums is expected to be an array of numbers.
+2. let count = {};
+This line initializes an empty object count. This object will be used to store the frequency of each number in the nums array.
+3. for (let i = 0; i < nums.length; i++)
+This starts a for loop that iterates over each element in the nums array. The loop variable i will go from 0 to nums.length - 1.
+4. const num = nums[i];
+ Inside the loop, num is assigned the value of the current element in the nums array (nums[i]).
+ This line extracts the current number being processed in the loop and stores it in num.
+5.  if (!count[num]) {
+            count[num] = 1;
+        } else {
+            count[num]++;
+        }
+This if-else block checks if the current number num is already a key in the count object:
+    -If count[num] does not exist (i.e., num has not been encountered before), it initializes count[num] to 1.
+    -If count[num] already exists, it increments the value associated with num by 1.
+
+if (!count[num]) 
+ checks if the current number num is not already a key in the count object.
+The ! operator negates the condition, so !count[num] evaluates to true if count[num] is undefined or false.
+
+count[num] = 1;
+This initializes the count for the current number num to 1, indicating that this is the first time num has been encountered.
+
+count[num]++;
+This increases the count for the current number num by 1, reflecting that num has been encountered again.
+6.  if (count[num] > nums.length / 2) {
+        return num;
+    }
+This checks if the count of the current number num exceeds half the length of the nums array:
+    -If count[num] is greater than nums.length / 2, it means num is the majority element.
+    -The function returns num as the majority element.
+
+Summary
+The function majorityElement finds the majority element in an array (an element that appears more than half the time). It does this by:
+
+    -Initializing an empty object to keep track of the counts of each element.
+    -Iterating through the array and updating the counts.
+    -Checking if any count exceeds half the length of the array, and if so, returning that element immediately.
